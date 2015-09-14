@@ -1,0 +1,39 @@
+
+def javaProjects() {
+    subprojects.findAll { new File(it.projectDir, 'src').directory }
+}
+
+allprojects {
+
+    group 'com.hczhang.hummingbird.demo'
+    version currentVersion
+
+    ext.spring_version = '4.1.7.RELEASE'
+}
+
+configure(javaProjects()) {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+
+        compile "org.slf4j:slf4j-api:1.7.12"
+        compile "org.slf4j:slf4j-log4j12:1.7.12"
+
+        compile 'com.hczhang.hummingbird:hummingbird-runtime:0.2'
+        compile 'com.hczhang.hummingbird:hummingbird-spring:0.2'
+
+        // Test lib
+        testCompile 'org.testng:testng:6.9.4'
+        testCompile 'org.mockito:mockito-core:1.9.5'
+    }
+
+}
