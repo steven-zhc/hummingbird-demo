@@ -25,8 +25,8 @@
 
     <hb:eventstore id="store" type="cassandra"/>
 
-    <hb:cloud id="cloud" package="com.fuhu.um.hummingbird.demo.spring.model" eventstore="store"/>
+    <hb:cloud id="cloud" package="com.hczhang.hummingbird.demo.spring.model" eventstore="store"/>
 
-    <hb:gateway id="gateway" package="com.fuhu.um.hummingbird.demo.spring.model" cloud="cloud"/>
+    <hb:gateway id="gateway" package="com.hczhang.hummingbird.demo.spring.model" cloud="cloud"/>
 
 </beans>
